@@ -31,7 +31,7 @@ class MappedHash < Hash
 end
 
 before = { user_id: 1, namae: "ogontaro" }
-after = MappingHash.new(before) #-> { id: 1, name: "ogontaro" }
+after = MappedHash.new(before) #-> { id: 1, name: "ogontaro" }
 ```
 
 ## Contributing
