@@ -1,14 +1,14 @@
-require_relative 'lib/hiroyuki/version'
+require_relative 'lib/shazo/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "hiroyuki"
-  spec.version       = Hiroyuki::VERSION
+  spec.name          = "shazo"
+  spec.version       = Shazo::VERSION
   spec.authors       = ["ogontaro"]
   spec.email         = ["ogontaro"]
 
   spec.summary       = %q{Hash Mapping Library}
   spec.description   = %q{Map a hash to another hash}
-  spec.homepage      = "https://github.com/ogontaro/hiroyuki"
+  spec.homepage      = "https://github.com/ogontaro/shazo"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 

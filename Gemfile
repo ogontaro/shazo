@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in hiroyuki.gemspec
+# Specify your gem's dependencies in shazo.gemspec
 gemspec
 
 gem "rake", "~> 12.0"

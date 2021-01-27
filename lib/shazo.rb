@@ -1,6 +1,6 @@
-require "hiroyuki/version"
+require "shazo/version"
 
-module Hiroyuki
+module Shazo
   def self.included(base)
     base.extend ClassMethods
   end

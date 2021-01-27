@@ -1,6 +1,6 @@
-RSpec.describe Hiroyuki do
+RSpec.describe Shazo do
   it "has a version number" do
-    expect(Hiroyuki::VERSION).not_to be nil
+    expect(Shazo::VERSION).not_to be nil
   end
 
   it "does something useful" do

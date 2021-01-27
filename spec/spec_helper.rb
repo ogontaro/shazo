@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "hiroyuki"
+require "shazo"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
