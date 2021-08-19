@@ -3,7 +3,18 @@ RSpec.describe Shazo do
     expect(Shazo::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  describe "#initialize" do
+    class MappedHash < Hash
+      include Shazo
+
+      property :id, -> { origin[:user_id] }
+      property :name, -> { origin[:namae] }
+    end
+
+    let(:before) { {user_id: 1, namae: "ogontaro"} }
+    let(:after) { {id: 1, name: "ogontaro"} }
+    it "変換したmapを返す" do
+      expect(MappedHash.new(before)).to eq after
+    end
   end
 end

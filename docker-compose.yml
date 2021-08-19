@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  ruby:
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+    container_name: slender-ruby_ruby
+    volumes:
+      - ./:/app/:cached

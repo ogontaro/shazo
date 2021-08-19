@@ -1,11 +1,9 @@
-require "shazo/version"
-
 module Shazo
   def self.included(base)
     base.extend ClassMethods
   end
 
-  def initialize(**origin)
+  def initialize(origin)
     @origin = origin
     self.class.assign_logics.each_key { |key| self[key] = instance_exec(&self.class.assign_logics[key]) }
     compact!

@@ -1,0 +1,53 @@
+version: 2.1
+orbs:
+  ruby-orbs: sue445/ruby-orbs@1.4.3
+
+executors:
+  ruby:
+    docker:
+      - image: circleci/ruby:2.7.4
+
+jobs:
+  rspec:
+    executor:
+      name: ruby
+    steps:
+      - checkout
+      - ruby-orbs/bundle-install:
+          restore_bundled_with: false
+          cache_key_prefix: v2-bundle
+      - run: bundle exec rspec
+  release:
+    executor:
+      name: ruby
+    steps:
+      - checkout
+      - run:
+          name: setup rubygems key
+          command: |
+            git config user.email "ogontaro@gmail.com"
+            git config user.name "ogontaro"
+            mkdir ~/.gem
+            cat .circleci/gem_credentials | sed -e "s/__RUBYGEMS_API_KEY__/${RUBYGEMS_API_KEY}/" > ~/.gem/credentials
+            chmod 0600 ~/.gem/credentials
+      - ruby-orbs/bundle-install:
+          restore_bundled_with: false
+          cache_key_prefix: v2-bundle
+      - run: bundle exec rake build
+      - run: bundle exec rake release
+
+workflows:
+  build_and_push:
+    jobs:
+      - rspec:
+          filters:
+            tags:
+              only: /^v.*/
+      - release:
+          requires:
+            - rspec
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
